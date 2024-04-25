@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiShow, BiHide } from "react-icons/bi";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -6,12 +6,14 @@ import { auth } from "../config/config";
 import { useNavigate } from "react-router-dom";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import {Helmet} from "react-helmet";
+import { CraftContext } from "../../Root";
 
 const Register = () => {
   const [lowerCase, setLowerCase] = useState("");
   const [upperCase, setUpperCase] = useState("");
   const [Length, setLength] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const {render, setRender} = useContext(CraftContext)
 
   const [data, setData] = useState({
     name: "",
@@ -71,6 +73,7 @@ const Register = () => {
             transition: Bounce,
             onClose: () => {
               navigate("/");
+              setRender(!render)
             },
           });
         })

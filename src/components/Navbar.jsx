@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./config/config";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { CraftContext } from "../Root";
 
 const Navbar = () => {
   const [loading, setLoading] = useState(true);
@@ -12,6 +13,7 @@ const Navbar = () => {
     photo: "",
     uid: "",
   });
+  const {render} = useContext(CraftContext)
 
   const navigate = useNavigate();
 
@@ -29,13 +31,13 @@ const Navbar = () => {
         setLoading(false);
       }
     });
-  }, [navigate]);
+  }, [navigate, render]);
 
 
   return (
     <>
       <Helmet>
-        <title>Luxury real estate</title>
+        <title>Artisan Haven</title>
       </Helmet>
       <div className="!relative z-20">
       <div className="navbar !absolute bg-base-100 animate__animated animate__bounce">
@@ -68,12 +70,12 @@ const Navbar = () => {
                 <>
                 <li>
                   <NavLink to={`updateProfile/${profile?.uid}`}>
-                    Update profile
+                  Add Craft Item
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to={`profile/${profile?.uid}`}>
-                    profile
+                  My Art&Craft List
                   </NavLink>
                 </li>
                 </>
@@ -86,7 +88,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Luxury real estate</a>
+          <a className="btn btn-ghost text-xl">Artisan Haven</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
@@ -96,10 +98,10 @@ const Navbar = () => {
             {profile?.uid && (
               <>
               <li>
-                <NavLink to={`updateProfile/${profile?.uid}`}>Update profile</NavLink>
+                <NavLink to={`updateProfile/${profile?.uid}`}>Add Craft Item</NavLink>
               </li>
               <li>
-                <NavLink to={`profile/${profile?.uid}`}>Profile</NavLink>
+                <NavLink to={`profile/${profile?.uid}`}>My Art&Craft List</NavLink>
               </li>
               </>
             )}
@@ -147,9 +149,12 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="mr-5">
+            <div className="mr-5 flex gap-10">
               <NavLink className="" to="/login">
                 Login
+              </NavLink>
+              <NavLink className="" to="/signup">
+                Register
               </NavLink>
             </div>
           )}
