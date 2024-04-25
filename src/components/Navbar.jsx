@@ -13,6 +13,8 @@ const Navbar = () => {
     photo: "",
     uid: "",
   });
+
+  const [theme, setTheme] = useState('light')
   const {render} = useContext(CraftContext)
 
   const navigate = useNavigate();
@@ -34,13 +36,37 @@ const Navbar = () => {
   }, [navigate, render]);
 
 
+  const handleThemeChange =(e) => {
+    
+    if (e.target.value == "light") {
+      setTheme('synthwave')
+      localStorage.setItem("theme", "synthwave");
+    }
+    if (e.target.value == "synthwave") {
+      setTheme('light')
+      localStorage.setItem("theme", "light");
+    }
+    
+  }
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem('theme')
+    if(localTheme){
+        setTheme(localTheme)
+        document.documentElement.setAttribute('data-theme', localTheme)
+    }else{
+        setTheme('light')
+        document.documentElement.setAttribute('data-theme', 'light')
+    }
+  },[theme])
+
   return (
     <>
       <Helmet>
         <title>Artisan Haven</title>
       </Helmet>
-      <div className="!relative z-20">
-      <div className="navbar !absolute bg-base-100 animate__animated animate__bounce">
+      <div >
+      <div className="navbar z-20 absolute top-0 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,10 +92,13 @@ const Navbar = () => {
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
+              <li>
+                <NavLink to="/all_art">All Art & craft Items</NavLink>
+              </li>
               {profile?.uid && (
                 <>
                 <li>
-                  <NavLink to={`updateProfile/${profile?.uid}`}>
+                  <NavLink to={`add_art_craft/${profile?.uid}`}>
                   Add Craft Item
                   </NavLink>
                 </li>
@@ -95,10 +124,13 @@ const Navbar = () => {
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
+            <li>
+              <NavLink to="/all_art">All Art & craft Items</NavLink>
+            </li>
             {profile?.uid && (
               <>
               <li>
-                <NavLink to={`updateProfile/${profile?.uid}`}>Add Craft Item</NavLink>
+                <NavLink to={`add_art_craft/${profile?.uid}`}>Add Craft Item</NavLink>
               </li>
               <li>
                 <NavLink to={`profile/${profile?.uid}`}>My Art&Craft List</NavLink>
@@ -113,7 +145,7 @@ const Navbar = () => {
               </li>
           </ul>
         </div>
-        <div className="navbar-end ">
+        <div className="navbar-end gap-5">
           {loading ? (
             <span className="loading loading-spinner loading-xs"></span>
           ) : profile ? (
@@ -158,6 +190,7 @@ const Navbar = () => {
               </NavLink>
             </div>
           )}
+          <input type="checkbox" value={theme} checked={theme == 'light'} onChange={handleThemeChange} className="toggle theme-controller"/>
         </div>
       </div>
       </div>

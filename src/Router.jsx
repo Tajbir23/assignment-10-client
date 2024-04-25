@@ -4,6 +4,9 @@ import Login from "./components/authentications/Login";
 import Register from "./components/authentications/Register";
 import Contact from "./pages/ExtraRoute/Contact";
 import About from "./pages/ExtraRoute/About";
+import AddArtCraft from "./pages/ArtCraft/AddArtCraft";
+import Body from "./pages/Body";
+import ProtectRoute from "./components/ProtectRoute";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +14,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <h1>404</h1>,
     children: [
+        {
+            path: '/',
+            element: <Body />
+        },
         {
             path: '/login',
             element: <Login />
@@ -26,6 +33,10 @@ const router = createBrowserRouter([
         {
             path: '/about',
             element: <About />
+        },
+        {
+            path: 'add_art_craft/:id',
+            element: <ProtectRoute><AddArtCraft /></ProtectRoute>
         }
     ]
   }

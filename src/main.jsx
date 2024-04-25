@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import Root from './Root.jsx'
 import 'react-toastify/dist/ReactToastify.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 
 
