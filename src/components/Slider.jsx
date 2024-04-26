@@ -3,6 +3,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CraftContext } from '../Root';
 
+
 const Slider = () => {
   const [data, setData] = useState([])
 

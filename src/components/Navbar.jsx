@@ -5,6 +5,7 @@ import { auth } from "./config/config";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { CraftContext } from "../Root";
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
   const [loading, setLoading] = useState(true);
@@ -90,30 +91,36 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/" data-tooltip-id="Home" data-tooltip-content="Home">Home</NavLink>
+                <Tooltip id="Home" />
               </li>
               <li>
-                <NavLink to="/all_art">All Art & craft Items</NavLink>
+                <NavLink to="/all_art" data-tooltip-id="all_art_craft" data-tooltip-content="All Art & craft Items">All Art & craft Items</NavLink>
+                <Tooltip id="all_art_craft" />
               </li>
               {profile?.uid && (
                 <>
                 <li>
-                  <NavLink to={`add_art_craft/${profile?.uid}`}>
+                  <NavLink to={`add_art_craft/${profile?.uid}`} data-tooltip-id="add_craft_item" data-tooltip-content="Add Craft Item">
                   Add Craft Item
                   </NavLink>
+                  <Tooltip id="add_craft_item" />
                 </li>
                 <li>
-                  <NavLink to={`profile/${profile?.uid}`}>
+                  <NavLink to={`my_art_craft/${profile?.uid}`} data-tooltip-id="my_art_craft" data-tooltip-content="My Art&Craft List">
                   My Art&Craft List
                   </NavLink>
+                  <Tooltip id="my_art_craft" />
                 </li>
                 </>
               )}
               <li >
-                <NavLink to="/contact">Contact me </NavLink>
+                <NavLink to="/contact" data-tooltip-id="contact" data-tooltip-content="Contact me">Contact me </NavLink>
+                <Tooltip id="contact" />
               </li>
               <li >
-                <NavLink to="/about">About </NavLink>
+                <NavLink to="/about" data-tooltip-id="about" data-tooltip-content="About">About </NavLink>
+                <Tooltip id="about" />
               </li>
             </ul>
           </div>
@@ -122,26 +129,36 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
             <li>
-              <NavLink to="/">Home</NavLink>
+            <NavLink to="/" data-tooltip-id="Home" data-tooltip-content="Home">Home</NavLink>
+                <Tooltip id="Home" />
             </li>
             <li>
-              <NavLink to="/all_art">All Art & craft Items</NavLink>
+              <NavLink to="/all_art" data-tooltip-id="all_art_craft" data-tooltip-content="All Art & craft Items" >All Art & craft Items</NavLink>
+              <Tooltip id="all_art_craft" />
             </li>
             {profile?.uid && (
               <>
               <li>
-                <NavLink to={`add_art_craft/${profile?.uid}`}>Add Craft Item</NavLink>
+              <NavLink to={`add_art_craft/${profile?.uid}`} data-tooltip-id="add_craft_item" data-tooltip-content="Add Craft Item">
+                  Add Craft Item
+                  </NavLink>
+                  <Tooltip id="add_craft_item" />
               </li>
               <li>
-                <NavLink to={`profile/${profile?.uid}`}>My Art&Craft List</NavLink>
+              <NavLink to={`my_art_craft/${profile?.uid}`} data-tooltip-id="my_art_craft" data-tooltip-content="My Art&Craft List">
+                  My Art&Craft List
+                  </NavLink>
+                  <Tooltip id="my_art_craft" />
               </li>
               </>
             )}
             <li>
-                <NavLink to="/contact">Contact me</NavLink>
+            <NavLink to="/contact" data-tooltip-id="contact" data-tooltip-content="Contact me">Contact me </NavLink>
+                <Tooltip id="contact" />
               </li>
               <li >
-                <NavLink to="/about">About </NavLink>
+              <NavLink to="/about" data-tooltip-id="about" data-tooltip-content="About">About </NavLink>
+                <Tooltip id="about" />
               </li>
           </ul>
         </div>
@@ -149,7 +166,7 @@ const Navbar = () => {
           {loading ? (
             <span className="loading loading-spinner loading-xs"></span>
           ) : profile ? (
-            <div className="dropdown dropdown-end">
+            <div className="relative group ">
               <div
                 tabIndex={0}
                 role="button"
@@ -164,10 +181,10 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 p-2 shadow menu menu-sm hidden group-hover:block top-8 absolute right-0 bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to={`/profile/${profile?.uid}`}>{profile.name}</Link>
+                  <h1>{profile.name}</h1>
                 </li>
                 <li>
                   <a

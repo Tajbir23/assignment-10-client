@@ -8,7 +8,7 @@ import Error from "../../components/SweetAlert/Error";
 
 const AddArtCraft = () => {
 
-  const {user} = useContext(CraftContext)
+  const {user, render, setRender} = useContext(CraftContext)
 
     // const [formData, setFormData] = useState({
     //     image: '',
@@ -67,6 +67,7 @@ const AddArtCraft = () => {
          .then(() => {
           e.target.reset()
           Success(`${formData?.item_name} is added successfully`);
+          setRender(!render)
          })
          .catch(err => Error(err.message))
         

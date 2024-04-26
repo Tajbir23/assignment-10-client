@@ -7,6 +7,9 @@ import About from "./pages/ExtraRoute/About";
 import AddArtCraft from "./pages/ArtCraft/AddArtCraft";
 import Body from "./pages/Body";
 import ProtectRoute from "./components/ProtectRoute";
+import Category from "./pages/ArtCraft/Category";
+import AllArtCraft from "./pages/ArtCraft/AllArtCraft";
+import MyArtCraft from "./pages/ArtCraft/MyArtCraft";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,19 @@ const router = createBrowserRouter([
         {
             path: 'add_art_craft/:id',
             element: <ProtectRoute><AddArtCraft /></ProtectRoute>
+        },
+        {
+            path: 'category/:id',
+            element: <Category />,
+            loader: (({params}) => fetch(`http://localhost:5000/category/${params.id}`))
+        },
+        {
+            path: '/all_art',
+            element: <AllArtCraft />
+        },
+        {
+            path: 'my_art_craft/:id',
+            element: <ProtectRoute><MyArtCraft /></ProtectRoute>
         }
     ]
   }
