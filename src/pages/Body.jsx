@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Slider from "../components/Slider"
 import ArtCraftCategory from "./ArtCraft/ArtCraftCategory"
 import { CraftContext } from "../Root"
+import CraftItemSection from "../components/CraftItemSection"
 
 
 const Body = () => {
@@ -18,6 +19,9 @@ const Body = () => {
   return (
     <div>
         <Slider />
+        <div className="mt-20 mx-20">
+          <CraftItemSection />
+        </div>
         <div>
           <div className="m-20">
             <h1 className="text-center text-4xl font-bold">Art & Craft Categories</h1>

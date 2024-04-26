@@ -12,7 +12,7 @@ const ArtCraftCategory = ({item}) => {
             <h2 className="text-3xl font-semibold tracking-wide">{item?.name}</h2>
         </div>
         <div className="flex-grow"></div> 
-        <Link to={`category/${item?.name}`} className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Show more</Link>
+        <Link to={`category/${item?.name}`} className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Show items</Link>
     </div>
 </div>
 
