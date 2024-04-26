@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CraftContext } from "../../Root";
+import { ToastContainer } from "react-toastify";
+import Success from "../../components/SweetAlert/Success";
 
 
 const AddArtCraft = () => {
+
+  const {user} = useContext(CraftContext)
 
     const [formData, setFormData] = useState({
         image: '',
@@ -13,11 +18,20 @@ const AddArtCraft = () => {
         customization: 'no',
         processing_time: '',
         stock_status: 'In stock',
-        user_email: '',
-        user_name: ''
+        user_email: user?.email,
+        user_name: user?.displayName
       });
+      const [subcategory, setSubcategory] = useState([])
 
 
+      useEffect(() => {
+        fetch('http://localhost:5000/sub_categories')
+         .then(res => res.json())
+         .then(data => setSubcategory(data))
+         .catch(err => console.log(err))
+
+         
+      },[])
 
 
     const handleChange = (e) => {
@@ -32,23 +46,33 @@ const AddArtCraft = () => {
         e.preventDefault();
         // Here you can handle the form submission, for example, sending the data to a backend API
         console.log(formData);
-        // Reset form data after submission if needed
-        setFormData({
-          image: '',
-          item_name: '',
-          subcategory_name: '',
-          short_description: '',
-          price: '',
-          rating: '',
-          customization: 'no',
-          processing_time: '',
-          stock_status: 'In stock',
-          user_email: '',
-          user_name: ''
-        });
+        fetch('http://localhost:5000/add_craft', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+         .then(res => res.json())
+         .then(() => {
+          setFormData({
+            image: '',
+            item_name: '',
+            subcategory_name: '',
+            short_description: '',
+            price: '',
+            rating: '',
+            customization: 'no',
+            processing_time: '',
+            stock_status: 'In stock',
+          });
+          Success(`${formData?.item_name} is added successfully`);
+         })
+        
       };
   return (
     <>
+    <ToastContainer />
         <div className="container mx-auto mt-8 bg-gray-100 p-8 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-8">Add Craft Item</h1>
       <form onSubmit={handleSubmit}>
@@ -64,7 +88,13 @@ const AddArtCraft = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="subcategory_name" className="block mb-2">Subcategory Name</label>
-          <input type="text" id="subcategory_name" name="subcategory_name" value={formData.subcategory_name} onChange={handleChange} className="w-full border rounded py-2 px-3" />
+          
+          <select id="subcategory_name" name="subcategory_name" value={formData.subcategory_name} onChange={handleChange} className="w-full border rounded py-2 px-3">
+            <option>Select Subcategory</option>
+            {
+              subcategory.map(sub => <option key={sub._id} value={sub.name}>{sub.name}</option>)
+            }
+          </select>
         </div>
         <div className="mb-4">
           <label htmlFor="short_description" className="block mb-2">Short Description</label>
@@ -73,7 +103,7 @@ const AddArtCraft = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="price" className="block mb-2">Price</label>
-            <input type="text" id="price" name="price" value={formData.price} onChange={handleChange} className="w-full border rounded py-2 px-3" />
+            <input type="number" id="price" name="price" value={formData.price} onChange={handleChange} className="w-full border rounded py-2 px-3" />
           </div>
           <div>
             <label htmlFor="rating" className="block mb-2">Rating</label>
@@ -101,11 +131,11 @@ const AddArtCraft = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="user_email" className="block mb-2">User Email</label>
-            <input type="email" id="user_email" name="user_email" value={formData.user_email} onChange={handleChange} className="w-full border rounded py-2 px-3" />
+            <input type="email" id="user_email" name="user_email" disabled value={formData.user_email} onChange={handleChange} className="w-full border rounded py-2 px-3" />
           </div>
           <div>
             <label htmlFor="user_name" className="block mb-2">User Name</label>
-            <input type="text" id="user_name" name="user_name" value={formData.user_name} onChange={handleChange} className="w-full border rounded py-2 px-3" />
+            <input type="text" id="user_name" name="user_name" disabled value={formData.user_name} onChange={handleChange} className="w-full border rounded py-2 px-3" />
           </div>
         </div>
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded">Add</button>
