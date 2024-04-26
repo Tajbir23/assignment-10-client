@@ -10,6 +10,7 @@ import ProtectRoute from "./components/ProtectRoute";
 import Category from "./pages/ArtCraft/Category";
 import AllArtCraft from "./pages/ArtCraft/AllArtCraft";
 import MyArtCraft from "./pages/ArtCraft/MyArtCraft";
+import ViewDetails from "./pages/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
         {
             path: 'my_art_craft/:id',
             element: <ProtectRoute><MyArtCraft /></ProtectRoute>
+        },
+        {
+            path: 'view_details/:id',
+            element: <ProtectRoute><ViewDetails /></ProtectRoute>,
+            loader: (({params}) => fetch(`http://localhost:5000/view_details/${params.id}`))
         }
     ]
   }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 const CraftItemSectionCard = ({item}) => {
@@ -10,7 +11,7 @@ const CraftItemSectionCard = ({item}) => {
 			<p className="dark:text-gray-800">{item?.short_description}</p>
 		</div>
         <div className="flex-grow"></div>
-		<button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">Read more</button>
+		<Link to={`view_details/${item?._id}`} className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View details</Link>
 	</div>
 </div>
   )
