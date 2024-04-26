@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CraftContext } from "../../Root";
 import { ToastContainer } from "react-toastify";
 import Success from "../../components/SweetAlert/Success";
+import Error from "../../components/SweetAlert/Error";
 
 
 
@@ -67,6 +68,7 @@ const AddArtCraft = () => {
           e.target.reset()
           Success(`${formData?.item_name} is added successfully`);
          })
+         .catch(err => Error(err.message))
         
       };
   return (
