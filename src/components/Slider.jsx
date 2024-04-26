@@ -10,13 +10,13 @@ const Slider = () => {
   const {render} = useContext(CraftContext)
 
   useEffect(() => {
-    fetch('/Data.json')
+    fetch('http://localhost:5000/sub_categories')
     .then((datas) => {
        return datas.json()
     })
     .then((datas) => {
-
-       setData(datas?.items)
+      console.log(datas)
+       setData(datas)
      })
      .catch((err) => console.log(err))
   },[render])
@@ -40,10 +40,11 @@ const Slider = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="md:h-96 h-40 mt-10 z-[-1]"
       >
-        {data.map((items) => <SwiperSlide key={items.id}>
+        {data.map((items) => <SwiperSlide key={items?._id}>
+        {console.log(items)}
           <div className='h-full w-full'>
             <img className='h-full w-full object-cover object-center' src={items?.image} alt='image not found'/>
-            <h1 className='absolute sm:top-5 sm:left-5 left-2 top-2 inset-0 font-bold text-white lg:text-4xl md:text-3xl sm:text-2xl text-xs'>{items.item_name}</h1>
+            <h1 className='absolute sm:top-5 sm:left-5 left-2 top-2 inset-0 font-bold text-blue-800 lg:text-4xl md:text-3xl sm:text-2xl text-xs'>{items.name}</h1>
           </div>
         </SwiperSlide>)}
         
