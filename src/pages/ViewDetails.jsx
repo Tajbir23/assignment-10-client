@@ -19,7 +19,7 @@ const ViewDetails = () => {
       } = data;
     
   return (
-    <div className="container mx-auto px-4 py-8 sm:py-12">
+    <div className="container lg:mx-20 m-auto px-4 py-8 sm:py-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <img src={image} alt={item_name} className="w-full h-auto object-cover rounded-lg" />
         <div>

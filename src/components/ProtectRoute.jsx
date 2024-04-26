@@ -1,13 +1,13 @@
 import { useContext } from "react"
 import { CraftContext } from "../Root"
-import { useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 
 
 const ProtectRoute = ({children}) => {
     
     const {user, loading} = useContext(CraftContext)
-    const navigate = useNavigate()
+
     if (loading) {
         return <h1>Loading</h1>
     }
@@ -15,7 +15,7 @@ const ProtectRoute = ({children}) => {
     if (user) {
         return children
     } else {
-        return navigate("/login")
+        return <Navigate to='/login' />
     }
 
     
