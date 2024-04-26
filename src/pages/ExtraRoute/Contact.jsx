@@ -14,7 +14,7 @@ const Contact = () => {
       <div className="mb-5">
         <label
           htmlFor="name"
-          className="mb-3 block text-base font-medium text-[#07074D]"
+          className="mb-3 block text-base font-medium "
         >
           Full Name
         </label>
@@ -29,7 +29,7 @@ const Contact = () => {
       <div className="mb-5">
         <label
           htmlFor="email"
-          className="mb-3 block text-base font-medium text-[#07074D]"
+          className="mb-3 block text-base font-medium "
         >
           Email Address
         </label>
@@ -44,7 +44,7 @@ const Contact = () => {
       <div className="mb-5">
         <label
           htmlFor="subject"
-          className="mb-3 block text-base font-medium text-[#07074D]"
+          className="mb-3 block text-base font-medium "
         >
           Subject
         </label>
@@ -59,7 +59,7 @@ const Contact = () => {
       <div className="mb-5">
         <label
           htmlFor="message"
-          className="mb-3 block text-base font-medium text-[#07074D]"
+          className="mb-3 block text-base font-medium "
         >
           Message
         </label>
@@ -68,7 +68,7 @@ const Contact = () => {
           name="message"
           id="message"
           placeholder="Type your message"
-          className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          className="w-full resize-none rounded-md border border-[#e0e0e0]  py-3 px-6 text-base font-medium  outline-none focus:border-[#6A64F1] focus:shadow-md"
         ></textarea>
       </div>
       <div>
