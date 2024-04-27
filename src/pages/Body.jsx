@@ -4,6 +4,8 @@ import ArtCraftCategory from "./ArtCraft/ArtCraftCategory"
 import { CraftContext } from "../Root"
 import CraftItemSection from "../components/CraftItemSection"
 import { Fade } from "react-awesome-reveal"
+import FaQ from "../components/FaQ"
+import Review from "../components/Review"
 
 
 const Body = () => {
@@ -40,6 +42,12 @@ const Body = () => {
             {data?.map((item) => <ArtCraftCategory key={item?._id} item={item} />)}
           </div>}
         </Fade>
+        <div className="m-20">
+        <FaQ />
+      </div>
+      <div className="flex items-center justify-center">
+      <Review />
+      </div>
     </div>
   )
 }
