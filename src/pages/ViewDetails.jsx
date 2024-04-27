@@ -32,7 +32,7 @@ const ViewDetails = () => {
           <p className="text-sm mb-2">Stock Status: {stockStatus}</p>
           <div className="mt-4">
             <h3 className="text-lg font-bold mb-2">Description:</h3>
-            <p className="text-gray-700">{short_description}</p>
+            <p >{short_description}</p>
           </div>
           <div className="mt-4">
             <h3 className="text-lg font-bold mb-2">User Details:</h3>

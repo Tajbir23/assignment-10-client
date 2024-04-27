@@ -26,7 +26,7 @@ const Body = () => {
           <div className="m-20">
             <h1 className="text-center text-4xl font-bold">Art & Craft Categories</h1>
           </div>
-          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+          <div className=" mx-20 mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
             {data?.map((item) => <ArtCraftCategory key={item?._id} item={item} />)}
           </div>
         </div>
