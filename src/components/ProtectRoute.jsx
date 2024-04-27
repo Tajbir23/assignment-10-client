@@ -9,7 +9,9 @@ const ProtectRoute = ({children}) => {
     const {user, loading} = useContext(CraftContext)
 
     if (loading) {
-        return <h1>Loading</h1>
+        return <div className=' flex items-center justify-center'>
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
     }
 
     if (user) {

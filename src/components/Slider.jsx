@@ -6,6 +6,7 @@ import { CraftContext } from '../Root';
 
 const Slider = () => {
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const {render} = useContext(CraftContext)
 
@@ -17,15 +18,21 @@ const Slider = () => {
     .then((datas) => {
       console.log(datas)
        setData(datas)
+       setLoading(false)
      })
-     .catch((err) => console.log(err))
+     .catch((err) => {
+      console.log(err)
+      setLoading(false)
+     })
   },[render])
 
 
   return (
     <div className='mx-20 lg:mt-36 mt-20'>
 
-    <Swiper
+    {loading ? <div className='md:h-96 h-40 flex items-center justify-center'>
+      <span className="loading loading-spinner loading-lg"></span>
+    </div> : <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -48,7 +55,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>)}
         
-      </Swiper>
+      </Swiper>}
 
       </div>
   )

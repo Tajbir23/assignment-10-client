@@ -12,12 +12,13 @@ import AllArtCraft from "./pages/ArtCraft/AllArtCraft";
 import MyArtCraft from "./pages/ArtCraft/MyArtCraft";
 import ViewDetails from "./pages/ViewDetails";
 import UpdateModal from "./components/Modals/UpdateModal";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1>404</h1>,
+    errorElement: <ErrorPage />,
     children: [
         {
             path: '/',

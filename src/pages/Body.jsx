@@ -8,14 +8,21 @@ import { Fade } from "react-awesome-reveal"
 
 const Body = () => {
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const {render} = useContext(CraftContext)
 
   useEffect(() => {
     fetch('http://localhost:5000/sub_categories')
     .then((response) => response.json())
-    .then((items) => setData(items) )
-    .catch((err) => console.error(err))
+    .then((items) => {
+      setData(items)
+      setLoading(false)
+    } )
+    .catch((err) => {
+      console.error(err)
+      setLoading(false)
+    })
   },[render])
   return (
     <div>
@@ -27,9 +34,11 @@ const Body = () => {
           <div className="m-20">
             <h1 className="text-center text-4xl font-bold">Art & Craft Categories</h1>
           </div>
-          <div className=" mx-20 mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+          {loading ? <div className='md:h-96 h-40 flex items-center justify-center'>
+      <span className="loading loading-spinner loading-lg"></span>
+    </div> : <div className=" mx-20 mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
             {data?.map((item) => <ArtCraftCategory key={item?._id} item={item} />)}
-          </div>
+          </div>}
         </Fade>
     </div>
   )
