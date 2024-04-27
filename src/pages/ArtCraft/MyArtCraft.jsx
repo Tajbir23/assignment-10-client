@@ -6,13 +6,14 @@ const MyArtCraft = () => {
   const [data, setData] = useState([]);
   const { user } = useContext(CraftContext);
   const [customization, setCustomization] = useState('')
+  const [reload, setReload] = useState(true)
 
   useEffect(() => {
     fetch(`http://localhost:5000/my_art_crafts/${user?.email}`)
       .then((response) => response.json())
       .then((items) => setData(items))
       .catch((err) => console.error(err));
-  }, [user?.email]);
+  }, [user?.email, reload]);
 
   const handleCustomization = (e) => {
     e.preventDefault();
@@ -20,6 +21,10 @@ const MyArtCraft = () => {
      .then((response) => response.json())
      .then((items) => setData(items))
      .catch((err) => console.error(err));
+  }
+
+  const handleReloadData = () => {
+    setReload(!reload)
   }
   console.log(data);
   return (
@@ -35,6 +40,7 @@ const MyArtCraft = () => {
             <option value='no'>No</option>
           </select>
           <button type="submit" disabled={!customization ? true : false} className="btn btn-primary">Sort</button>
+          <button onClick={handleReloadData} className="btn btn-primary">Default</button>
         </form>
       </div>
       <div className="lg:m-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
