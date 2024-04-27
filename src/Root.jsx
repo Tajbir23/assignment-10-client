@@ -13,6 +13,7 @@ const Root = () => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
 
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async(user)=> {
             await user
@@ -31,7 +32,7 @@ const Root = () => {
         render,
         setRender,
         user,
-        loading
+        loading,
     }
   return (
     <CraftContext.Provider value={contextValue}>

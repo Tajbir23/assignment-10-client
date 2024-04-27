@@ -11,6 +11,7 @@ import Category from "./pages/ArtCraft/Category";
 import AllArtCraft from "./pages/ArtCraft/AllArtCraft";
 import MyArtCraft from "./pages/ArtCraft/MyArtCraft";
 import ViewDetails from "./pages/ViewDetails";
+import UpdateModal from "./components/Modals/UpdateModal";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
         {
             path: 'view_details/:id',
             element: <ProtectRoute><ViewDetails /></ProtectRoute>,
+            loader: (({params}) => fetch(`http://localhost:5000/view_details/${params.id}`))
+        },
+        {
+            path: '/update/:id',
+            element: <ProtectRoute><UpdateModal /></ProtectRoute>,
             loader: (({params}) => fetch(`http://localhost:5000/view_details/${params.id}`))
         }
     ]

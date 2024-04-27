@@ -10,19 +10,6 @@ const AddArtCraft = () => {
 
   const {user, render, setRender} = useContext(CraftContext)
 
-    // const [formData, setFormData] = useState({
-    //     image: '',
-    //     item_name: '',
-    //     subcategory_name: '',
-    //     short_description: '',
-    //     price: '',
-    //     rating: '',
-    //     customization: 'no',
-    //     processing_time: '',
-    //     stock_status: 'In stock',
-    //     user_email: user?.email,
-    //     user_name: user?.displayName
-    //   });
       const [subcategory, setSubcategory] = useState([])
 
 
@@ -31,8 +18,6 @@ const AddArtCraft = () => {
          .then(res => res.json())
          .then(data => setSubcategory(data))
          .catch(err => console.log(err))
-
-         
       },[])
 
 

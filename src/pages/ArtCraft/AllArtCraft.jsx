@@ -5,7 +5,7 @@ const AllArtCraft = () => {
   const data = useLoaderData()
   console.log(data)
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto lg:mx-20 h-screen">
   <table className="table">
     {/* head */}
     <thead>
@@ -23,7 +23,7 @@ const AllArtCraft = () => {
         data?.map((item, index) => <tr key={item._id} className="hover:bg-base-200">
         <th>{index + 1}</th>
         <td>{item?.item_name}</td>
-        <td>{item?.price}</td>
+        <td>{item?.price}$</td>
         <td>{item?.rating}</td>
         <td><Link to={`/view_details/${item?._id}`} >View details</Link></td>
       </tr>)
