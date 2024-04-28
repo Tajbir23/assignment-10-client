@@ -42,7 +42,7 @@ const Body = () => {
             <span className="loading loading-spinner loading-lg"></span>
           </div>
         ) : (
-          <div className=" md:mx-20 mx-5 mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+          <div className=" md:mx-20 mx-5 mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
             {data?.map((item) => (
               <ArtCraftCategory key={item?._id} item={item} />
             ))}

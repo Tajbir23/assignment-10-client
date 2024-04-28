@@ -33,7 +33,7 @@ const CraftItemSection = () => {
           <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 my-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-10 my-20">
           {data &&
             data?.map((item) => (
               <CraftItemSectionCard key={item?._id} item={item} />

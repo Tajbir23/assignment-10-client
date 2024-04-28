@@ -6,7 +6,7 @@ const Category = () => {
     const {id} = useParams()
     
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center m-20 mt-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center m-20 mt-32">
         <Helmet>
             <title>{id}</title>
         </Helmet>
@@ -23,7 +23,7 @@ const Category = () => {
                             <p className=" text-base mb-2">Rating: {rating} ⭐</p>
                             <p className=" text-base mb-2">Processing Time: {processingTime}</p>
                         </div>
-                        <div className="px-6 py-4">
+                        <div className="px-6 py-4 mb-5">
                             <Link to={`/view_details/${item?._id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 View Details
                             </Link>

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const ArtCraftCategory = ({item}) => {
 
   return (
-    <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800 flex flex-col">
-    <img src={item?.image} alt="" className="object-cover object-center w-[300px] rounded-t-md h-72 dark:bg-gray-500" />
+    <div className="w-full rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800 flex flex-col">
+    <img src={item?.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
     <div className="flex flex-col justify-between p-6 space-y-8 flex-grow">
         <div className="space-y-2">
             <h2 className="text-3xl font-semibold tracking-wide">{item?.name}</h2>

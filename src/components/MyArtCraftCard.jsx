@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { CraftContext } from "../Root"
 import { Link } from "react-router-dom"
+import propTypes from "prop-types"
 
 
 const MyArtCraftCard = ({item}) => {
@@ -40,6 +41,10 @@ const MyArtCraftCard = ({item}) => {
       </div>
     </div>
   )
+}
+
+MyArtCraftCard.propTypes = {
+  item: propTypes.node
 }
 
 export default MyArtCraftCard
