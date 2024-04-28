@@ -1,11 +1,15 @@
+import { Helmet } from "react-helmet"
 import { Link, useLoaderData } from "react-router-dom"
 
 
 const AllArtCraft = () => {
   const data = useLoaderData()
-  console.log(data)
+
   return (
     <>
+    <Helmet>
+      <title>All ArtCraft</title>
+    </Helmet>
     {!data ? <div className='md:h-96 h-40 flex items-center justify-center'>
     <span className="loading loading-spinner loading-lg"></span>
   </div> : <div className="overflow-x-auto lg:mx-20 h-screen">
@@ -21,7 +25,7 @@ const AllArtCraft = () => {
         </tr>
       </thead>
       <tbody >
-        {/* row 1 */}
+        
         {
           data?.map((item, index) => <tr key={item._id} className="hover:bg-base-200">
           <th>{index + 1}</th>

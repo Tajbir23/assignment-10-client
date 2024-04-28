@@ -162,7 +162,7 @@ const Navbar = () => {
               </li>
           </ul>
         </div>
-        <div className="navbar-end gap-5">
+        <div className="navbar-end md:gap-5 gap-1">
           {loading ? (
             <span className="loading loading-spinner loading-xs"></span>
           ) : profile ? (
@@ -198,7 +198,7 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="mr-5 flex gap-10">
+            <div className="mr-5 flex md:gap-10 gap-3">
               <NavLink className="" to="/login">
                 Login
               </NavLink>

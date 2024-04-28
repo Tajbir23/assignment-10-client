@@ -16,60 +16,86 @@ import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-        {
-            path: '/',
-            element: <Body />
-        },
-        {
-            path: '/login',
-            element: <Login />
-        },
-        {
-            path: '/signup',
-            element: <Register />
-        },
-        {
-            path: '/contact',
-            element: <Contact />
-        },
-        {
-            path: '/about',
-            element: <About />
-        },
-        {
-            path: 'add_art_craft/:id',
-            element: <ProtectRoute><AddArtCraft /></ProtectRoute>
-        },
-        {
-            path: 'category/:id',
-            element: <Category />,
-            loader: (({params}) => fetch(`http://localhost:5000/category/${params.id}`))
-        },
-        {
-            path: '/all_art',
-            element: <AllArtCraft />,
-            loader: (() => fetch('http://localhost:5000/all_art_crafts'))
-        },
-        {
-            path: 'my_art_craft/:id',
-            element: <ProtectRoute><MyArtCraft /></ProtectRoute>
-        },
-        {
-            path: 'view_details/:id',
-            element: <ProtectRoute><ViewDetails /></ProtectRoute>,
-            loader: (({params}) => fetch(`http://localhost:5000/view_details/${params.id}`))
-        },
-        {
-            path: '/update/:id',
-            element: <ProtectRoute><UpdateModal /></ProtectRoute>,
-            loader: (({params}) => fetch(`http://localhost:5000/view_details/${params.id}`))
-        }
-    ]
-  }
-])
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Register />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "add_art_craft/:id",
+        element: (
+          <ProtectRoute>
+            <AddArtCraft />
+          </ProtectRoute>
+        ),
+      },
+      {
+        path: "category/:id",
+        element: <Category />,
+        loader: ({ params }) =>
+          fetch(
+            `https://art-craft-server-three.vercel.app/category/${params.id}`
+          ),
+      },
+      {
+        path: "/all_art",
+        element: <AllArtCraft />,
+        loader: () =>
+          fetch("https://art-craft-server-three.vercel.app/all_art_crafts"),
+      },
+      {
+        path: "my_art_craft/:id",
+        element: (
+          <ProtectRoute>
+            <MyArtCraft />
+          </ProtectRoute>
+        ),
+      },
+      {
+        path: "view_details/:id",
+        element: (
+          <ProtectRoute>
+            <ViewDetails />
+          </ProtectRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://art-craft-server-three.vercel.app/view_details/${params.id}`
+          ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <ProtectRoute>
+            <UpdateModal />
+          </ProtectRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://art-craft-server-three.vercel.app/view_details/${params.id}`
+          ),
+      },
+    ],
+  },
+]);
 
 export default router;

@@ -1,12 +1,17 @@
 import { useContext } from "react"
 import { CraftContext } from "../Root"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 const MyArtCraftCard = ({item}) => {
+  const {setDeleteItem, setDeleteModal} = useContext(CraftContext)
+
     const { image, item_name, price, rating, customization, stock_status } = item
 
-    
+    const handleDelete = (item) => {
+      setDeleteItem(item)
+      setDeleteModal(true)
+    }
   return (
     <div className="w-72 rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition duration-300">
       <img className="w-full h-48 object-cover" src={image} alt={item_name} />
@@ -28,7 +33,7 @@ const MyArtCraftCard = ({item}) => {
           <Link to={`/update/${item?._id}`} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 transition duration-300 transform hover:scale-105">
             Update
           </Link>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105">
+          <button onClick={() => handleDelete(item)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105">
             Delete
           </button>
         </div>

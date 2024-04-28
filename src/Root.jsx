@@ -12,6 +12,8 @@ const Root = () => {
     const [render, setRender] = useState(true)
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
+    const [deleteModal, setDeleteModal] = useState(false)
+    const [deleteItem, setDeleteItem] = useState()
 
 
     useEffect(() => {
@@ -33,6 +35,10 @@ const Root = () => {
         setRender,
         user,
         loading,
+        deleteModal,
+        setDeleteModal,
+        deleteItem,
+        setDeleteItem,
     }
   return (
     <CraftContext.Provider value={contextValue}>

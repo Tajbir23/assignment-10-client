@@ -1,12 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const Category = () => {
     const category = useLoaderData();
-
-    console.log(category);
+    const {id} = useParams()
     
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center m-20 mt-32">
+        <Helmet>
+            <title>{id}</title>
+        </Helmet>
             {category.map((item) =>  {
                 const { image, itemName, subcategoryName, shortDescription, price, rating, processingTime } = item;
                 return (
