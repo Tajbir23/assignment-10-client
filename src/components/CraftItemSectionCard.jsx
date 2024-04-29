@@ -12,6 +12,7 @@ const CraftItemSectionCard = ({item}) => {
 			<h2 className="text-3xl font-semibold tracking-wide">{item?.item_name}</h2>
 			<p className="dark:text-gray-800">{item?.short_description}</p>
 			<p className="dark:text-gray-800 text-xl">Category : {item?.subcategory_name}</p>
+			<p className="dark:text-gray-800 text-xl">Price : {item?.price}$</p>
 		</div>
         <div className="flex-grow"></div>
 		<Link to={`view_details/${item?._id}`} className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View details</Link>

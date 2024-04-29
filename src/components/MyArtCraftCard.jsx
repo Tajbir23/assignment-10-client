@@ -14,7 +14,7 @@ const MyArtCraftCard = ({item}) => {
       setDeleteModal(true)
     }
   return (
-    <div className="w-72 rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition duration-300">
+    <div className="w-full rounded-lg overflow-hidden shadow-md bg-white hover:shadow-xl transition duration-300">
       <img className="w-full h-48 object-cover" src={image} alt={item_name} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-gray-800">{item_name}</div>
