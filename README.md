@@ -27,7 +27,7 @@ Join us at Artisan Haven and unleash your inner artist today!
 git clone <repository-url>
 
 # Navigate to the project directory
-cd HealthDx
+cd client
 
 # Install dependencies
 npm install
