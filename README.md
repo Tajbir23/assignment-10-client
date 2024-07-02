@@ -2,7 +2,9 @@
 
 Welcome to Artisan Haven, your online destination for all things painting and drawing!
 
-Visit the live site: [Artisan Haven](https://assignment10.tajbirideas.com)
+## Visit the Live Site
+
+[Artisan Haven Live Site](https://assignment10.tajbirideas.com)
 
 ### Features:
 
@@ -17,3 +19,11 @@ Visit the live site: [Artisan Haven](https://assignment10.tajbirideas.com)
 - **Shop Art Supplies**: Browse through our curated selection of quality art supplies and materials, handpicked to fuel your creativity and passion for art.
 
 Join us at Artisan Haven and unleash your inner artist today!
+
+## Installation and Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+  cd ArtisanHaven
+npm start
