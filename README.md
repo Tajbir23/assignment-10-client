@@ -22,8 +22,15 @@ Join us at Artisan Haven and unleash your inner artist today!
 
 ## Installation and Setup
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd ArtisanHaven
-   npm install
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to the project directory
+cd HealthDx
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
